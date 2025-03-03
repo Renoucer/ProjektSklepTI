@@ -1,8 +1,10 @@
+using Microsoft.EntityFrameworkCore;
+using ProjektSklepTI.DAL;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
-
+builder.Services.AddControllersWithViews();builder.Services.AddDbContext<FilmsContext>(options=>options.UseSqlServer(builder.Configuration.GetConnectionString("localDB")));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
