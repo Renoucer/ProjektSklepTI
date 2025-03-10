@@ -1,6 +1,25 @@
-﻿<!DOCTYPE html>
+﻿@model IEnumerable<Category>
+<!DOCTYPE html>
 <html lang="en">
 <head>
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <a class="navbar-brand" href="#">KATEGORIE</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                @foreach (var category in Model)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">@category.Name</a>
+                    </li>
+
+                }
+             
+            </ul>
+        </div>
+    </nav>
     <title>Bootstrap 5 Example</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,15 +27,17 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link href="~/css/main.css" rel="stylesheet" />
 </head>
+
 <body>
-
-    <div class="container-fluid p-5 bg-primary text-white text-center">
-        <h1>My First Bootstrap Page</h1>
-        <p>Resize this responsive page to see the effect!</p>
-    </div>
-
     <div class="container mt-5">
         @RenderBody()
+    </div>
+
+    <div class="mt-5 p-4 bg-primary text=black text-center">
+            <a href="@Url.Action("FooterSites", "Home", new{siteName="About" })">About</a>
+        <a href="@Url.Action("FooterSites", "Home", new{siteName="PaymentMethods" })">Payment Methods</a>
+        <a href="@Url.Action("FooterSites", "Home", new{siteName="TermsOfService" })">Terms of Service</a>
+        <a href="@Url.Action("FooterSites", "Home", new{siteName="Contact" })">Contact</a>
     </div>
 
 </body>

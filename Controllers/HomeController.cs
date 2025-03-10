@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProjektSklepTI.DAL;
 using ProjektSklepTI.Models;
 using System.Diagnostics;
 
@@ -6,16 +7,17 @@ namespace ProjektSklepTI.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        FilmsContext db;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(FilmsContext db)
         {
-            _logger = logger;
+            this.db = db;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var categories = db.Categories.ToList();
+            return View(categories);
         }
 
         public IActionResult Privacy()
@@ -23,6 +25,11 @@ namespace ProjektSklepTI.Controllers
             return View();
         }
 
-       
+        public IActionResult FooterSites(string siteName) 
+        { 
+        return View(siteName, new List<Category>());
+        }
+
+
     }
 }
