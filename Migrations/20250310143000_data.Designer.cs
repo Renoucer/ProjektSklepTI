@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProjektSklepTI.DAL;
 
@@ -10,9 +11,10 @@ using ProjektSklepTI.DAL;
 namespace ProjektSklepTI.Migrations
 {
     [DbContext(typeof(FilmsContext))]
-    partial class FilmsContextModelSnapshot : ModelSnapshot
+    [Migration("20250310143000_data")]
+    partial class data
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
