@@ -23,9 +23,9 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllerRoute(
-    name: "StaticSites",
-    pattern:"Info/{siteName}",
-    defaults: new {controller="Home", action="FooterSites"}
+    name: "Categories",
+    pattern:"{categoryName}",
+    defaults: new {controller="Films", action="ProductList"}
     );
 
 app.MapControllerRoute(

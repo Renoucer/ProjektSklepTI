@@ -1,26 +1,7 @@
-﻿@model IEnumerable<Category>
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
-        <a class="navbar-brand" href="#">KATEGORIE</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-                @foreach (var category in Model)
-                {
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("ProductList", "Films", new{categoryName=category.Name})">@category.Name</a>
-                    </li>
-
-                }
-             
-            </ul>
-        </div>
-    </nav>
+    @(await Component.InvokeAsync("Menu"))
     <title>Bootstrap 5 Example</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
