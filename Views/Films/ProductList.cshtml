@@ -1,5 +1,7 @@
 ﻿@model IEnumerable<Film>;
-
+@{
+    ViewData["Title"]="Kategoria " + Model.First().Category.Name;
+}
 <table class="table">
     <thead>
         <tr>
