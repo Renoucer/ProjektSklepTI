@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<Category>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +13,7 @@
                 @foreach (var category in Model)
                 {
                     <li class="nav-item">
-                        <a class="nav-link" href="#">@category.Name</a>
+                        <a class="nav-link" href="@Url.Action("ProductList", "Films", new{categoryName=category.Name})">@category.Name</a>
                     </li>
 
                 }
@@ -33,7 +34,7 @@
         @RenderBody()
     </div>
 
-    <div class="mt-5 p-4 bg-primary text=black text-center">
+    <div class="mt-5 p-4 bg-white text=black text-center">
             <a href="@Url.Action("FooterSites", "Home", new{siteName="About" })">About</a>
         <a href="@Url.Action("FooterSites", "Home", new{siteName="PaymentMethods" })">Payment Methods</a>
         <a href="@Url.Action("FooterSites", "Home", new{siteName="TermsOfService" })">Terms of Service</a>
