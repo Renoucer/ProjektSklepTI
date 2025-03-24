@@ -20,7 +20,7 @@ namespace ProjektSklepTI.ViewComponents
             var films = new List<Film>();
             if (category != null)
             {
-                films = category.Films.ToList();
+                films = category.Films.OrderBy(f=>f.Title).ToList();
             }
 
            return await Task.FromResult(View("_SideMenu", films));
