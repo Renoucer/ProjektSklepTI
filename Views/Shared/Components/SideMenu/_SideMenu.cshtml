@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Film>
+
+<div class="sidemenu">
+    <ul>
+        @foreach (var film in Model)
+        {
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("Details","Films", new{filmId=film.FilmId})">@film.Title </a>
+            </li>
+        }
+     
+    </ul>
+</div>

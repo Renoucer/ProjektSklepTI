@@ -23,13 +23,25 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllerRoute(
+    name: "Details",
+    pattern: "{action}/{filmId}",
+    defaults: new { controller = "Films", action = "Details" }
+    );
+
+app.MapControllerRoute(
     name: "Categories",
     pattern:"{categoryName}",
     defaults: new {controller="Films", action="ProductList"}
+    );
+app.MapControllerRoute(
+    name: "StaticSites",
+    pattern: "Info/{siteName}",
+    defaults: new { controller = "Home", action = "FooterSites" }
     );
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
 
 app.Run();

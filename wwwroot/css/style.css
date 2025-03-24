@@ -9,3 +9,6 @@
     margin-right: 2px;
 
 }
+td > a{
+    text-decoration:none;
+}
