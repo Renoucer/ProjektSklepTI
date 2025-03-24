@@ -1,10 +1,22 @@
 ﻿@model Film
 
-@(await Component.InvokeAsync("SideMenu", new{categoryName=Model.Category.Name }))
-<ul>
-    <li>Title: @Model.Title</li>
-    <li>Director: @Model.Director</li>
-    <li>Price: @Model.Price</li>
-    <li>Description: @Model.Desc</li>
 
-</ul>
+<table>
+    <tr>
+        <td>
+            <h2>@Model.Category.Name</h2>
+        </td>
+
+
+        <td>
+            @(await Component.InvokeAsync("SideMenu", new { categoryName = Model.Category.Name }))
+            <ul>
+                <li>Title: @Model.Title</li>
+                <li>Director: @Model.Director</li>
+                <li>Price: @Model.Price</li>
+                <li>Description: @Model.Desc</li>
+
+            </ul>
+        </td>
+    </tr>
+</table>
