@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Film>
+
+@{
+    ViewData["Title"] = "Wszystkie Filmy";
+}
+
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
+    @foreach (var film in Model)
+    {
+        <div class="bg-white shadow-lg rounded-2xl overflow-hidden">
+            <a href="@Url.Action("Details", "Films", new { filmId = film.FilmId })">
+                <!-- Zmniejszona wysokość obrazu, np. h-32 lub h-24 -->
+                <img src="~/grafika/@film.Poster" alt="@film.Title" class="w-full h-32 object-cover">
+            </a>
+        </div>
+    }
+</div>

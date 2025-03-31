@@ -29,5 +29,10 @@ namespace ProjektSklepTI.Controllers
             var film=  db.Films.Find(filmId);
             return View(film);
         }
+        public IActionResult All()
+        {
+            var films = db.Films.ToList();  // Pobiera wszystkie filmy z bazy
+            return View(films);  // Przekazuje do widoku "all.cshtml"
+        }
     }
 }
