@@ -2,6 +2,10 @@
 
 @using (Html.BeginForm("EditFilm", "Films", FormMethod.Post))
 {
+    @Html.HiddenFor(f=>f.CategoryId)
+    @Html.HiddenFor(f=>f.Poster)
+    @Html.HiddenFor(f=>f.FilmId)
+
 <table>
     <tr>
         <td>
