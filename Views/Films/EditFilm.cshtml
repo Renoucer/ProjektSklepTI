@@ -1,0 +1,27 @@
+﻿@model Film
+
+@using (Html.BeginForm("EditFilm", "Films", FormMethod.Post))
+{
+<table>
+    <tr>
+        <td>
+            @* <h2>@Model.Category.Name</h2> *@
+        </td>
+        <td>
+            <h2>pod tym jest obrazek</h2>
+            <img src="~/grafika/@Model.Poster" height="400px" />
+        </td>
+        <td>
+            @* @(await Component.InvokeAsync("SideMenu", new { categoryName = Model.Category.Name })) *@
+            <ul>
+                    <li>Title: @Html.TextBoxFor(f=>f.Title, new { @class="form-control"})</li>
+                    <li>Director: @Html.TextBoxFor(f=>f.Director, new { @class="form-control"})</li>
+                    <li>Price: @Html.TextBoxFor(f=>f.Price, new { @class="form-control"})</li>
+                    <li>Description: @Html.TextBoxFor(f=>f.Desc, new { @class="form-control"})</li>
+
+            </ul>
+        </td>
+    </tr>
+</table>
+<button type="submit">Save changes</button>
+}

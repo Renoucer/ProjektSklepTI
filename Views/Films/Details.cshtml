@@ -19,6 +19,7 @@
                 <li>Description: @Model.Desc</li>
 
             </ul>
+            <button onclick="window.location.href='@Url.Action("EditFilm", "Films",new{id=Model.FilmId})'">Edit</button>
         </td>
     </tr>
 </table>
