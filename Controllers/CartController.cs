@@ -18,7 +18,7 @@ namespace ProjektSklepTI.Controllers
         {
             var cart = CartManager.GetItems(HttpContext.Session);
             ViewBag.Total=CartManager.GetCartValue(HttpContext.Session);
-            return View();
+            return View(cart);
         }
 
         public IActionResult AddToCart(int filmId)
