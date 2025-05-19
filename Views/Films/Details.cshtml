@@ -19,7 +19,8 @@
                 <li>Description: @Model.Desc</li>
 
             </ul>
-            <button onclick="window.location.href='@Url.Action("EditFilm", "Films",new{id=Model.FilmId})'">Edit</button>
+            <button class="btn btn-secondary" onclick="window.location.href='@Url.Action("AddToCart", "Cart",new{filmId=Model.FilmId})'">Dodaj do koszyka</button>
+            <button class="btn btn-primary" onclick="window.location.href='@Url.Action("EditFilm", "Films",new{id=Model.FilmId})'">Edit</button>
         </td>
     </tr>
 </table>

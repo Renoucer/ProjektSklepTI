@@ -1,9 +1,48 @@
-﻿@model IEnumerable<CartItem>
+﻿@model IEnumerable<ProjektSklepTI.Infrastructure.CartItem>
+@section Scripts
+{
+
+  
+<script src="~/lib/jquery/dist/jquery.min.js">
+</script>
+
+<script type="text/javascript">
+    $(".trash").click(function () {
+
+        let idCartItem = $(this).data("id");
+        
+        if (idCartItem != null) {
+
+            $.post("/Cart/RemoveFromCart", { id: idCartItem }, function (response) {
+
+                if (response.itemQuanitity == 0) {
+
+                    $("$cartItem-" + response.itemId).fadeOut("slow");
+                }
+            });
+        }
+    });
+</script>
+
+}
 
 <table class="table">
+    <tr>
+        <th>Title</th>
+        <th>Quantity</th>
+        <th>Price</th>
+    </tr>
     @foreach(var cartItem in Model)
     {
-        
+        <tr id="cartItem-@cartItem.Film.FilmId">
+            <td>@cartItem.Film.Title</td>
+            <td id="itemQuantity-@cartItem.Film.FilmId">@cartItem.Quantity</td>
+            <td>@cartItem.Value zł</td>
+            <td><a class="trash" data-id="@cartItem.Film.FilmId">🧺</a></td>
+        </tr>
     }
 
 </table>
+<div id="total">
+   Total: <span>@ViewBag.Total</span> zł
+</div>

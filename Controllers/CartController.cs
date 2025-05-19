@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProjektSklepTI.DAL;
 using ProjektSklepTI.Infrastructure;
+using ProjektSklepTI.Models;
 
 namespace ProjektSklepTI.Controllers
 {
@@ -24,6 +25,17 @@ namespace ProjektSklepTI.Controllers
         {
             CartManager.AddToCart(HttpContext.Session, db, filmId);
             return RedirectToAction("Index");
+        }
+
+        public IActionResult RemoveFromCart(int id) 
+        {
+            var model = new RemoveViewModel()
+            {
+                itemQuantity = CartManager.RemoveFromCart(HttpContext.Session, id),
+                itemId = id,
+                cartValue = CartManager.GetCartValue(HttpContext.Session)
+            };
+            return Json(model);
         }
     }
 }

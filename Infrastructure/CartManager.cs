@@ -51,5 +51,26 @@ namespace ProjektSklepTI.Infrastructure
             var cart= GetItems(session);
             return cart.Sum(c=> c.Value * c.Quantity);
         }
+
+        public static int RemoveFromCart(ISession session, int id)
+        {
+            var cart = GetItems(session);
+            int ilosc = 0;
+            var thisFilm=cart.Find(i=>i.Film.FilmId==id);
+
+            if (thisFilm == null) return 0;
+            if(thisFilm.Quantity > 1)
+            {
+                thisFilm.Quantity--;
+                ilosc=thisFilm.Quantity;
+            }
+            else
+            {
+                cart.Remove(thisFilm);
+            }
+
+            session.SetObjectAsJson(Keys.CartSessionKey, cart);
+            return ilosc;
+        }
     }
 }
