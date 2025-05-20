@@ -15,6 +15,24 @@ namespace ProjektSklepTI.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
         }
+        public async Task<IActionResult> Login()
+        {
+            var result = await _signInManager.PasswordSignInAsync("TestUser", "Test", false, false);
+            ViewBag.result = "Zarejestrowano użytkownika\n" + result;
+
+
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                ViewBag.result = $"Nie udało się ({result})";
+            }
+
+            return View();
+        }
+
 
         public async Task<IActionResult> Register()
         {
@@ -37,9 +55,11 @@ namespace ProjektSklepTI.Controllers
             return View();
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Logout()
         {
-            return View();
+            await _signInManager.SignOutAsync();
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }
