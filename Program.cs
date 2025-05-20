@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ProjektSklepTI.DAL;
-using ShopUKW2025.Models.Users;
+using ProjektSklepTI.Models.Users;
 
 var builder = WebApplication.CreateBuilder(args);
 

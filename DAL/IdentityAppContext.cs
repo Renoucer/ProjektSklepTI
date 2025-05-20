@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using ShopUKW2025.Models.Users;
+using ProjektSklepTI.Models.Users;
 
-namespace ShopUKW2025.DAL
+namespace ProjektSklepTI.DAL
 {
     public class IdentityAppContext : IdentityDbContext<AppUser, AppRole, int>
     {
