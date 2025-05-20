@@ -19,6 +19,11 @@
 
                     $("$cartItem-" + response.itemId).fadeOut("slow");
                 }
+                else {
+                    $("#itemQuantity-" + response.itemId).text(response.itemQuantity);
+                }
+
+                $("#total").text(response.cartValue);
             });
         }
     });
