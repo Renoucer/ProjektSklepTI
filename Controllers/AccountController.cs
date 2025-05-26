@@ -33,27 +33,55 @@ namespace ProjektSklepTI.Controllers
             return View();
         }
 
-
-        public async Task<IActionResult> Register()
+        [HttpGet]
+        public IActionResult Register()
         {
-
-            var user = await _userManager.FindByNameAsync("TestUser");
-
-            if (user == null)
-            {
-                user = new AppUser()
-                {
-                    UserName = "TestUser",
-                    Email = "testuser@ukw.edu.pl",
-                    FirstName = "Jan",
-                    LastName = "Kowalski"
-                };
-
-                var result = await _userManager.CreateAsync(user, "Test");
-            }
-
             return View();
         }
+
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByNameAsync(model.UserName);
+
+                if (user == null)
+                {
+                    user = new AppUser()
+                    {
+                        UserName = model.UserName,
+                        Email = model.Email,
+                        FirstName = model.FirstName,
+                        LastName = model.LastName
+                    };
+
+                    var result = await _userManager.CreateAsync(user, model.Password);
+                    if (result.Succeeded)
+                    {
+                        ViewBag.result = "Zarejestrowano";
+                        await _signInManager.SignInAsync(user, false);
+
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else { ViewBag.result = "Rejestracja nieudana."; }
+
+
+
+                    return View();
+                }
+                else
+                {
+                    return View(model);
+                }
+            }
+            else
+            {
+                ViewBag.result = "uzytkonwik o tej nazwie isntieje";
+                return View(model);  
+            }
+        }
+        
 
         public async Task<IActionResult> Logout()
         {
